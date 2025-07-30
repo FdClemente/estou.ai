@@ -3,18 +3,11 @@
     use Carbon\Carbon;
 @endphp
 
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>{{ optional($settings)->{'tagline_'.$locale} ?? __('strings.tagline_default') }}</title>
+<!-- Livewire component root: only one top‑level element allowed -->
+<div class="antialiased text-gray-900">
     <!-- Tailwind CSS via CDN for rapid prototyping -->
     <script src="https://cdn.tailwindcss.com"></script>
     @livewireStyles
-</head>
-<body class="antialiased text-gray-900">
     <!-- Language selector -->
     <div class="fixed top-4 right-4 z-50">
         <select wire:model="locale" class="p-2 border border-gray-300 rounded">
@@ -180,5 +173,4 @@
     </section>
 
     @livewireScripts
-</body>
-</html>
+</div>
