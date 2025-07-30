@@ -2,7 +2,7 @@
 
 return [
     // Section titles
-    'about' => 'About me',
+    'about' => 'About us',
     'skills' => 'Skills',
     'projects' => 'Projects',
     'testimonials' => 'Testimonials',
