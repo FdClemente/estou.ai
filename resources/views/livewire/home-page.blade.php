@@ -4,10 +4,7 @@
 @endphp
 
 <!-- Livewire component root: only one top‑level element allowed -->
-<div class="antialiased text-gray-900">
-    <!-- Tailwind CSS via CDN for rapid prototyping -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    @livewireStyles
+<div>
     <!-- Language selector -->
     <div class="fixed top-4 right-4 z-50">
         <select wire:model="locale" class="p-2 border border-gray-300 rounded">
@@ -172,5 +169,5 @@
         </div>
     </section>
 
-    @livewireScripts
+    <!-- Note: Livewire scripts are included in the main layout -->
 </div>
