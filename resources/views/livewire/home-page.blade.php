@@ -5,13 +5,6 @@
 
 <!-- Livewire component root: only one top‑level element allowed -->
 <div>
-    <!-- Language selector -->
-    <div class="fixed top-4 right-4 z-50">
-        <select wire:model="locale" class="p-2 border border-gray-300 rounded">
-            <option value="pt">{{ __('strings.portuguese') }}</option>
-            <option value="en">{{ __('strings.english') }}</option>
-        </select>
-    </div>
 
     <!-- Hero section -->
     <section id="hero" class="relative overflow-hidden pt-28 pb-28 md:pt-40 md:pb-32 text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-400">
@@ -168,6 +161,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between">
+            <div class="mb-4 sm:mb-0 text-center sm:text-left">
+                &copy; {{ date('Y') }} {{ config('app.name', 'estou.ai') }} – Todos os direitos reservados.
+            </div>
+            <div class="text-center sm:text-right">
+                <select wire:model="locale" class="p-2 border border-gray-700 bg-gray-800 text-gray-200 rounded">
+                    <option value="pt">{{ __('strings.portuguese') }}</option>
+                    <option value="en">{{ __('strings.english') }}</option>
+                </select>
+            </div>
+        </div>
+    </footer>
 
     <!-- Note: Livewire scripts are included in the main layout -->
 </div>
