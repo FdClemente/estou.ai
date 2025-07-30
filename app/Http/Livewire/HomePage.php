@@ -83,7 +83,7 @@ class HomePage extends Component
         $this->validate();
 
         try {
-            $to = env('CONTACT_EMAIL');
+            $to = config('app.contact');
             if (! empty($to)) {
                 Mail::to($to)->send(new ContactMessage($this->name, $this->email, $this->message));
             }
@@ -102,7 +102,6 @@ class HomePage extends Component
      */
     public function render()
     {
-        // set the application locale so that translation helpers work correctly
         app()->setLocale($this->locale);
 
         return view('livewire.home-page', [

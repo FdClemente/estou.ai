@@ -29,4 +29,8 @@ return [
     'language' => 'Language',
     'portuguese' => 'Portuguese',
     'english' => 'English',
+
+
+    'footer' => 'All rights reserved.'
+
 ];
