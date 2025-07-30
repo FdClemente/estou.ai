@@ -9,14 +9,10 @@ return [
     'contact' => 'Contacto',
 
     // Hero
-<<<<<<< HEAD
-    // Default tagline used when no custom tagline is configured. This conveys a more
-    // corporate identity, emphasising integrated web solutions rather than a personal role.
-    // Default tagline now emphasises our ability to turn ideas into real, innovative solutions.
+    // Default tagline used when no custom tagline is configured. Conveys a corporate identity,
+    // emphasising integrated web solutions rather than a personal role. It also highlights the ability
+    // to turn ideas into real, innovative solutions.
     'tagline_default' => 'Transformamos ideias em soluções digitais inovadoras',
-=======
-    'tagline_default' => 'Filipe Clemente – Fullstack Developer',
->>>>>>> e56cb76 (Initial portfolio commit)
 
     // Contact form labels
     'name' => 'Nome',
