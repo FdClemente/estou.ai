@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Testimonial model
@@ -12,9 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * optional image attribute may point to a client photo stored in the
  * filesystem.
  */
-class Testimonial extends Model
+class Testimonial extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
 
     /**
      * Mass assignable attributes.

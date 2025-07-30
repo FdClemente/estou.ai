@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\BiographyResource\Pages;
 
 use App\Filament\Resources\BiographyResource;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
 
 /**
@@ -15,4 +16,11 @@ use Filament\Resources\Pages\ManageRecords;
 class ManageBiographies extends ManageRecords
 {
     protected static string $resource = BiographyResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
 }

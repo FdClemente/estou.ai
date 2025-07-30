@@ -8,6 +8,8 @@ use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Resources\Pages\ManageRecords;
 use Filament\Tables;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
 
 /**
  * SettingResource
@@ -55,8 +57,10 @@ class SettingResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkDeleteAction::make(),
-            ]);
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);;
     }
 
     public static function getPages(): array

@@ -7,6 +7,8 @@ use App\Models\Testimonial;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
 
 /**
  * TestimonialResource
@@ -41,11 +43,7 @@ class TestimonialResource extends Resource
                     ->label('Comment (EN)')
                     ->required()
                     ->rows(4),
-                Forms\Components\FileUpload::make('image')
-                    ->label('Foto')
-                    ->image()
-                    ->directory('testimonials')
-                    ->nullable(),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('image'),
             ]);
     }
 
@@ -58,7 +56,7 @@ class TestimonialResource extends Resource
                 Tables\Columns\TextColumn::make('position')->label('Cargo'),
                 Tables\Columns\TextColumn::make('comment_pt')->label('Comentário (PT)')->limit(50),
                 Tables\Columns\TextColumn::make('comment_en')->label('Comment (EN)')->limit(50),
-                Tables\Columns\ImageColumn::make('image')->disk('public')->directory('testimonials')->label('Foto'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->label('Updated'),
             ])
             ->actions([
@@ -66,7 +64,9 @@ class TestimonialResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkDeleteAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
             ]);
     }
 

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Project model
@@ -13,9 +15,11 @@ use Illuminate\Database\Eloquent\Model;
  * uploaded and stored in the public or storage directory; the path is saved
  * in the image attribute. Projects may optionally link to external pages.
  */
-class Project extends Model
+class Project extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
 
     /**
      * Mass assignable attributes.

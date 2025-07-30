@@ -7,6 +7,8 @@ use App\Models\Project;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
 
 /**
  * ProjectResource
@@ -35,6 +37,7 @@ class ProjectResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
+                    ->columnSpanFull()
                     ->required()
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
@@ -53,11 +56,8 @@ class ProjectResource extends Resource
                     ->label('Tecnologias')
                     ->helperText('Lista separada por vírgulas das tecnologias utilizadas')
                     ->nullable(),
-                Forms\Components\FileUpload::make('image')
-                    ->label('Imagem')
-                    ->image()
-                    ->directory('projects')
-                    ->nullable(),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('image'),
+
                 Forms\Components\TextInput::make('link')
                     ->label('Link')
                     ->url()
@@ -72,7 +72,7 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('id')->sortable(),
                 Tables\Columns\TextColumn::make('title_pt')->label('Título (PT)')->sortable(),
                 Tables\Columns\TextColumn::make('title_en')->label('Title (EN)')->sortable(),
-                Tables\Columns\ImageColumn::make('image')->disk('public')->directory('projects')->label('Imagem'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('date')->date()->label('Data')->sortable(),
                 Tables\Columns\TextColumn::make('technologies')->label('Tecnologias')->limit(30),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->label('Updated'),
@@ -82,7 +82,9 @@ class ProjectResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkDeleteAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
